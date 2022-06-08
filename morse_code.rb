@@ -36,5 +36,17 @@ ALPHA_TO_MORSE = {
   "9" => "----.",
   "0" => "-----",
   " " => "/" 
-
   }
+
+  MORSE_TO_ALPHA = ALPHA_TO_MORSE.invert
+
+  def morse_to_alpha(str)
+    str.split("   ").map { |word| word.split(" ").map { |letter| MORSE_TO_ALPHA[letter] }.join }.join(" ")
+  end
+
+  # Bonus
+  def alpha_to_morse(str)
+    str.split("").map { |letter| ALPHA_TO_MORSE[letter] }.join(" ")
+  end
+
+  print (morse_to_alpha(".-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...") + "\n")
