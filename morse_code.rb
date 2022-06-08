@@ -40,8 +40,16 @@ ALPHA_TO_MORSE = {
 
   MORSE_TO_ALPHA = ALPHA_TO_MORSE.invert
 
+  def decode_char(str)
+    MORSE_TO_ALPHA[str].upcase
+  end
+
+  def decode_word(str)
+    str.split(" ").map { |char| decode_char(char) }.join
+  end
+
   def morse_to_alpha(str)
-    str.split("   ").map { |word| word.split(" ").map { |letter| MORSE_TO_ALPHA[letter] }.join }.join(" ")
+    str.split("   ").map { |word| decode_word(word)}.join(" ")
   end
 
   # Bonus
